@@ -124,6 +124,7 @@ public class DragBallView extends View {
         currentRadiusStart = radiusStart;
     }
 
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -298,12 +299,14 @@ public class DragBallView extends View {
     /**
      * 设置当前计算的到的半径
      */
+    boolean first = true;
     private void setCurrentRadius() {
         //两个圆心之间的距离
         float distance = (float) Math.sqrt(Math.pow(pointStart.x - pointEnd.x, 2) + Math.pow(pointStart.y - pointEnd.y, 2));
 
         //拖拽距离在设置的最大值范围内才绘制贝塞尔图形
-        if (distance <= maxDistance) {
+        Log.e(TAG,"distance="+distance+",maxDistance="+maxDistance);
+        if (first||distance <= maxDistance) {
             //比例系数  控制两圆半径缩放
             float percent = distance / maxDistance;
 
@@ -318,6 +321,7 @@ public class DragBallView extends View {
             currentRadiusStart = radiusStart;
             currentRadiusEnd = radiusEnd;
         }
+        first = false;
     }
 
     /**
