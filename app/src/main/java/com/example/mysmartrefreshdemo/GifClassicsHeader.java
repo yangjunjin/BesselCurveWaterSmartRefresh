@@ -53,7 +53,7 @@ public class GifClassicsHeader extends ClassicsHeader {
     @Override
     public void onMoving(boolean isDragging, float percent, int offset, int height, int maxDragHeight) {
         super.onMoving(isDragging, percent, offset, height, maxDragHeight);//percent = 2.5最大
-        int offsetY = (int) (percent*170f/2.5f);
+        float offsetY =  percent*90f/1.1f;
         mDragBallView.setPercent(offsetY);
 
         LogUtils.e("onMoving==isDragging="+isDragging+",percent="+percent+",offset="+offset+",height="+height+",maxDragHeight="+maxDragHeight);

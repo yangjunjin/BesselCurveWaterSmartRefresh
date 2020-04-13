@@ -216,7 +216,7 @@ public class DragBallView extends View {
 
         mHandler.removeCallbacksAndMessages(null);
         mHandler.sendEmptyMessageDelayed(1, 3000);
-        mHandler.sendEmptyMessageDelayed(2, 4000);
+        mHandler.sendEmptyMessageDelayed(2, 3000);
     }
 
     @SuppressLint("HandlerLeak")
