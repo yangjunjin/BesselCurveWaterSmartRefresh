@@ -17,15 +17,15 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
  * @author yjj
  * @date 2020/4/9
  */
-public class GifClassicsHeader extends ClassicsHeader {
+public class BesselCurveClassicsHeader extends ClassicsHeader {
     private ProgressBar mProgressBar;
     private DragBallView mDragBallView;//粘性
 
-    public GifClassicsHeader(Context context) {
+    public BesselCurveClassicsHeader(Context context) {
         this(context, null);
     }
 
-    public GifClassicsHeader(Context context, AttributeSet attrs) {
+    public BesselCurveClassicsHeader(Context context, AttributeSet attrs) {
         super(context, attrs);
         mDragBallView = new DragBallView(context);
         mProgressBar = new ProgressBar(context);

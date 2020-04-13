@@ -1,23 +1,15 @@
 package com.example.mysmartrefreshdemo;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.DragEvent;
-import android.view.View;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshFooter;
-import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.constant.RefreshState;
-import com.scwang.smartrefresh.layout.listener.OnMultiPurposeListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
@@ -32,7 +24,7 @@ public class MainActivity extends Activity {
     private MyAdapter mMyAdapter;
     private LinearLayoutManager mLayoutManager;
     private List<String> list;
-    private GifClassicsHeader mGifHeader;
+    private BesselCurveClassicsHeader mGifHeader;
     private SmartRefreshLayout refreshLayout;
 
     @Override
