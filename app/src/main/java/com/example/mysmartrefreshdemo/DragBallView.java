@@ -47,8 +47,7 @@ public class DragBallView extends View {
     private boolean mIsCanDrag = false;
     //是否超过最大距离
     private boolean isOutOfRang = false;
-    //最终圆是否消失
-    private boolean disappear = false;
+
 
     //两圆相离最大距离
     private float maxDistance;
@@ -98,14 +97,12 @@ public class DragBallView extends View {
         pointD = new PointF();
 
         pointO = new PointF();
-
     }
 
     /**
      * 初始化画笔
      */
     private void initPaint() {
-
         circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         circlePaint.setColor(circleColor);
         circlePaint.setAntiAlias(true);
@@ -118,9 +115,8 @@ public class DragBallView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         startX = w / 2;
-//        startY = (int) getStatusBarHeight(getResources());
-        startY = 15;
-        maxDistance = dp2px(40);
+        startY = 10;
+        maxDistance = dp2px(35);
         radiusStart = dp2px(4);
         radiusEnd = dp2px(4);
 
@@ -132,21 +128,16 @@ public class DragBallView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         pointStart.set(startX, startY);
+        Log.e(TAG, "onDraw==" + isOutOfRang + ",offsetY=" + pointEnd.y);
         if (isOutOfRang) {
             pointStart.set(pointEnd.x, pointEnd.y * 0.8f);
             currentRadiusStart = dp2px(1);
             currentRadiusEnd = dp2px(4);
             setABCDOPoint();
+
             drawStartBall(canvas, pointStart, currentRadiusStart);
-//            drawBezier(canvas);
             drawWaterBezier(canvas);
-
             drawEndBall(canvas, pointEnd, currentRadiusEnd);
-
-//            if (!disappear) {
-//                drawEndBall(canvas, pointEnd, currentRadiusEnd);
-//            }
-//              drawWater(canvas, pointEnd, currentRadiusEnd);
         } else {
             drawStartBall(canvas, pointStart, currentRadiusStart);
             if (mIsCanDrag) {
@@ -154,11 +145,6 @@ public class DragBallView extends View {
                 drawBezier(canvas);
             }
         }
-    }
-
-    public float getStatusBarHeight(Resources resources) {
-        int status_bar_height_id = resources.getIdentifier("status_bar_height", "dimen", "android");
-        return resources.getDimension(status_bar_height_id);
     }
 
     /**
@@ -261,7 +247,6 @@ public class DragBallView extends View {
                     currentY = event.getY();
                     //设置拖拽圆的坐标
                     pointEnd.set(currentX, currentY);
-//                    pointEnd.set(startX, currentY);
                     if (!isOutOfRang) {
                         setCurrentRadius();
                         setABCDOPoint();
@@ -276,13 +261,11 @@ public class DragBallView extends View {
                 if (mIsCanDrag) {
                     if (isOutOfRang) {
                         //消失动画
-                        disappear = true;
                         if (onDragBallListener != null) {
                             onDragBallListener.onDisappear();
                         }
                         invalidate();
                     } else {
-                        disappear = false;
                         //回弹动画
                         final float a = (pointEnd.y - pointStart.y) / (pointEnd.x - pointStart.x);
                         ValueAnimator valueAnimator = ValueAnimator.ofFloat(pointEnd.x, pointStart.x);
@@ -326,7 +309,7 @@ public class DragBallView extends View {
 
             //之所以*0.6和0.2只为了放置拖拽过程圆变化的过大和过小这个系数是多次尝试的出的
             //你也可以适当调整系数达到自己想要的效果
-            currentRadiusStart = (1 - percent * 0.8f) * radiusStart;
+            currentRadiusStart = (1 - percent * 0.6f) * radiusStart;
             currentRadiusEnd = (1 + percent * 0.2f) * radiusEnd;
 
             isOutOfRang = false;
@@ -387,7 +370,6 @@ public class DragBallView extends View {
     public void reset() {
         mIsCanDrag = true;
         isOutOfRang = false;
-        disappear = false;
         mHandler.removeCallbacksAndMessages(null);
         currentRadiusStart = dp2px(4);
         currentRadiusEnd = dp2px(4);

@@ -54,8 +54,6 @@ public class MainActivity extends Activity {
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
-//                mGifHeader.stopRotation();
-//                mGifHeader.startRotation();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {

@@ -21,10 +21,6 @@ public class GifClassicsHeader extends ClassicsHeader {
     private ProgressBar mProgressBar;
     private DragBallView mDragBallView;//粘性
 
-    private static long lastclicktime = 0;
-    private static float startPercent = 0.4f;
-    private final static int INTERVAL_TIME = 40;
-
     public GifClassicsHeader(Context context) {
         this(context, null);
     }
@@ -53,35 +49,14 @@ public class GifClassicsHeader extends ClassicsHeader {
     @Override
     public void onMoving(boolean isDragging, float percent, int offset, int height, int maxDragHeight) {
         super.onMoving(isDragging, percent, offset, height, maxDragHeight);//percent = 2.5最大
-        float offsetY =  percent*90f/1.1f;
+        if(percent==0)mDragBallView.reset();
+        float offsetY =  percent*100f/1.1f;
         mDragBallView.setPercent(offsetY);
-
-        LogUtils.e("onMoving==isDragging="+isDragging+",percent="+percent+",offset="+offset+",height="+height+",maxDragHeight="+maxDragHeight);
-        LogUtils.e("GifClassicsHeader中的onMoving:1");
-        if (!isDragging) {
-            LogUtils.e("GifClassicsHeader中的onMoving:2");
-            return;
-        }
-
-        if (System.currentTimeMillis() - lastclicktime > INTERVAL_TIME) {
-            LogUtils.e("GifClassicsHeader中的onMoving:3");
-            lastclicktime = System.currentTimeMillis();
-            if (percent < startPercent) {
-                LogUtils.e("GifClassicsHeader中的onMoving:4");
-                return;
-            }
-        }
     }
 
     public void reset() {
         mProgressBar.setVisibility(INVISIBLE);
         mDragBallView.setVisibility(INVISIBLE);
-    }
-
-    @Override
-    public void onStartAnimator(@NonNull RefreshLayout refreshLayout, int height, int maxDragHeight) {
-        super.onStartAnimator(refreshLayout, height, maxDragHeight);
-        LogUtils.e("GifClassicsHeader中的onStartAnimator==height="+height+",maxDragHeight="+maxDragHeight);
     }
 
     @Override
