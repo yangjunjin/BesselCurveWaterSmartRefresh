@@ -389,7 +389,6 @@ public class DragBallView extends View {
         isOutOfRang = false;
         disappear = false;
         mHandler.removeCallbacksAndMessages(null);
-//        setVisibility(View.VISIBLE);
         currentRadiusStart = dp2px(4);
         currentRadiusEnd = dp2px(4);
         pointStart.set(startX, startY);

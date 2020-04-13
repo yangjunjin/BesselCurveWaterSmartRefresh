@@ -53,7 +53,7 @@ public class GifClassicsHeader extends ClassicsHeader {
     @Override
     public void onMoving(boolean isDragging, float percent, int offset, int height, int maxDragHeight) {
         super.onMoving(isDragging, percent, offset, height, maxDragHeight);//percent = 2.5最大
-        int offsetY = (int) (percent*150f/2.5f);
+        int offsetY = (int) (percent*170f/2.5f);
         mDragBallView.setPercent(offsetY);
 
         LogUtils.e("onMoving==isDragging="+isDragging+",percent="+percent+",offset="+offset+",height="+height+",maxDragHeight="+maxDragHeight);
@@ -97,14 +97,15 @@ public class GifClassicsHeader extends ClassicsHeader {
                 LogUtils.e("GifClassicsHeader中的onStateChanged:1");
                 break;
             case RefreshReleased:
+                mDragBallView.reset();
                 if (mDragBallView.getVisibility() == VISIBLE) {
                     mDragBallView.setVisibility(GONE);
-                    mDragBallView.reset();
                 }
                 LogUtils.e("GifClassicsHeader中的onStateChanged:2");
                 mProgressBar.setVisibility(View.VISIBLE);
                 break;
             case RefreshFinish:
+                mDragBallView.reset();
                 LogUtils.e("GifClassicsHeader中的onStateChanged:3");
                 break;
             case ReleaseToTwoLevel:

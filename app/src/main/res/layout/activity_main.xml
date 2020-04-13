@@ -23,7 +23,7 @@
         <com.example.mysmartrefreshdemo.GifClassicsHeader
             android:id="@+id/refresh_header"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             app:srlAccentColor="#ffffff"
             app:srlDrawableArrowSize="0dp"
