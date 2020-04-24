@@ -234,6 +234,16 @@ public class DragBallView extends View {
         postInvalidate();
     }
 
+    /**
+     * 禁止这个控件消费事件
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        return false;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float currentX = 0;
