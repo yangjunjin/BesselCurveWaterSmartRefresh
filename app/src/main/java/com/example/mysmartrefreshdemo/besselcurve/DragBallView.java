@@ -1,4 +1,4 @@
-package com.example.mysmartrefreshdemo;
+package com.example.mysmartrefreshdemo.besselcurve;
 
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;

@@ -20,7 +20,7 @@
         app:srlEnablePreviewInEditMode="true"
         app:srlReboundDuration="1000">
 
-        <com.example.mysmartrefreshdemo.BesselCurveClassicsHeader
+        <com.example.mysmartrefreshdemo.besselcurve.BesselCurveClassicsHeader
             android:id="@+id/refresh_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.example.mysmartrefreshdemo;
+package com.example.mysmartrefreshdemo.besselcurve;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SizeUtils;
+import com.example.mysmartrefreshdemo.R;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
