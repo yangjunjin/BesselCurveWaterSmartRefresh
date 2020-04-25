@@ -34,7 +34,7 @@ public class DragBallView extends View {
     private String TAG = "DragBallView======";
     private Paint circlePaint;
 
-    private int circleColor = Color.RED;
+    private int waterColor=Color.RED;
     private float radiusStart;//固定圆的圆半径
     private float radiusEnd;//拖拽圆的圆半径
 
@@ -84,6 +84,12 @@ public class DragBallView extends View {
         initPoint();
     }
 
+    public void setWaterColor(int color){
+        circlePaint.setColor(color);
+        setVisibility(VISIBLE);
+        postInvalidate();
+    }
+
     /**
      * 初始化所有点
      */
@@ -104,7 +110,7 @@ public class DragBallView extends View {
      */
     private void initPaint() {
         circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        circlePaint.setColor(circleColor);
+        circlePaint.setColor(waterColor);
         circlePaint.setAntiAlias(true);
         circlePaint.setStyle(Paint.Style.FILL_AND_STROKE);
 

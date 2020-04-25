@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#cecece">
+    android:background="#cecece"
+    android:orientation="vertical">
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
@@ -32,7 +32,8 @@
             app:srlEnableLastTime="false"
             app:srlFinishDuration="0"
             app:srlReboundDuration="2000"
-            app:srlTextSizeTitle="14sp" />
+            app:srlTextSizeTitle="14sp"
+            app:srlWaterColor="@color/colorPrimary" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
